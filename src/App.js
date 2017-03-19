@@ -1,13 +1,16 @@
 import React from 'react';
-import { LargeOrbit, SmallOrbit } from './makeNewOrbitNode.js';
+import { OrbitOne, OrbitTwo, OrbitThree, OrbitFour, OrbitFive } from './makeNewOrbitNode.js';
 import './App.css';
 
 
 const LoadingIcon = () =>
 {
   return <div>
-    <LargeOrbit/>
-    <SmallOrbit/>
+    <OrbitOne/>
+    <OrbitTwo/>
+    <OrbitThree/>
+    <OrbitFour/>
+    <OrbitFive/>
   </div>;
 };
 
