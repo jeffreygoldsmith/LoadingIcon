@@ -4,22 +4,16 @@ let orbitNodeRadius = 10;
 let originX = 250;
 let originY = 250;
 
-var count = 0;
 let velocity = 40;
+let originalRadius = 10;
 
-const findOrbitRadius = () =>
+const makeNewOrbitNode = (iterationNumber) =>
 {
-  
-}
-
-const makeNewOrbitNode = (radius) =>
-{
+  let radius = originalRadius * Math.pow(2, iterationNumber);
+  console.log(radius);
   let period = (2 * Math.PI * (radius / 10)) / velocity;
-  let foo = (2 * Math.PI) / (1000 * period);
-  let calculatedPeriod = (Math.PI / foo) / 2;
-  console.log();
-  console.log(period);
-  console.log(calculatedPeriod);
+  let calculatedPeriod = (Math.PI / ((2 * Math.PI) / (1000 * period))) / 2;
+
 	return class extends Component {
     constructor(props){
       super(props);
@@ -42,7 +36,7 @@ const makeNewOrbitNode = (radius) =>
       var {theta, radius} = this.state;
       theta = (theta + (Math.PI / calculatedPeriod)) % (Math.PI * 2); // Increment the angle
 
-      let newX = originX + radius * Math.cos(theta); 
+      let newX = originX + radius * Math.cos(theta); // Calculate new position
       let newY = originY + radius * Math.sin(theta);
 
       this.setState({ x: newX, y: newY, theta: theta });
@@ -52,6 +46,7 @@ const makeNewOrbitNode = (radius) =>
     {
       return (
         <div>
+          {/* Orbit ring */}
           <div 
             style={{ 
               position: 'absolute',
@@ -65,6 +60,7 @@ const makeNewOrbitNode = (radius) =>
               borderColor: '#123456' 
             }}
           />
+          {/* Orbit node */}
           <div 
             style={{ 
               backgroundColor: 'red', 
@@ -82,8 +78,9 @@ const makeNewOrbitNode = (radius) =>
   };
 };
 
-export const OrbitFive = makeNewOrbitNode(160);
-export const OrbitFour = makeNewOrbitNode(80);
-export const OrbitThree = makeNewOrbitNode(40);
-export const OrbitTwo = makeNewOrbitNode(20);
-export const OrbitOne = makeNewOrbitNode(10);
+// Export orbits
+export const OrbitFive = makeNewOrbitNode(4);
+export const OrbitFour = makeNewOrbitNode(3);
+export const OrbitThree = makeNewOrbitNode(2);
+export const OrbitTwo = makeNewOrbitNode(1);
+export const OrbitOne = makeNewOrbitNode(0);
