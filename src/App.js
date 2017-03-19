@@ -5,12 +5,14 @@ import './App.css';
 
 const LoadingIcon = () =>
 {
-  return <div>
-    <OrbitOne/>
-    <OrbitTwo/>
-    <OrbitThree/>
-    <OrbitFour/>
-    <OrbitFive/>
+  return <div style={{ width: '100vw', height: '100vh', backgroundColor: '#FDFEFE', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ position: 'relative' }}>
+      <OrbitOne/>
+      <OrbitTwo/>
+      <OrbitThree/>
+      <OrbitFour/>
+      <OrbitFive/>
+    </div>
   </div>;
 };
 

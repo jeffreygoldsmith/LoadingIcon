@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
-let orbitNodeRadius = 10;
-let originX = 250;
-let originY = 250;
-
-let velocity = 40;
-let originalRadius = 10;
+let orbitNodeRadius = 12;
+let velocity = 35;
+let originalRadius = 12;
 
 const makeNewOrbitNode = (iterationNumber) =>
 {
   let radius = originalRadius * Math.pow(2, iterationNumber);
-  console.log(radius);
   let period = (2 * Math.PI * (radius / 10)) / velocity;
   let calculatedPeriod = (Math.PI / ((2 * Math.PI) / (1000 * period))) / 2;
 
@@ -36,8 +32,8 @@ const makeNewOrbitNode = (iterationNumber) =>
       var {theta, radius} = this.state;
       theta = (theta + (Math.PI / calculatedPeriod)) % (Math.PI * 2); // Increment the angle
 
-      let newX = originX + radius * Math.cos(theta); // Calculate new position
-      let newY = originY + radius * Math.sin(theta);
+      let newX = radius * Math.cos(theta); // Calculate new position
+      let newY = radius * Math.sin(theta);
 
       this.setState({ x: newX, y: newY, theta: theta });
     }
@@ -50,20 +46,20 @@ const makeNewOrbitNode = (iterationNumber) =>
           <div 
             style={{ 
               position: 'absolute',
-              borderWidth: 1,
-              top: (originY - this.state.radius) + orbitNodeRadius / 2, 
-              left: (originX - this.state.radius) + orbitNodeRadius / 2, 
+              borderWidth: 2,
+              top: -this.state.radius + orbitNodeRadius / 2, 
+              left: -this.state.radius + orbitNodeRadius / 2, 
               width: this.state.radius * 2, 
               height: this.state.radius * 2, 
               borderRadius: this.state.radius * 2, 
               borderStyle: 'solid', 
-              borderColor: '#123456' 
+              borderColor: '#48247E' 
             }}
           />
           {/* Orbit node */}
           <div 
             style={{ 
-              backgroundColor: 'red', 
+              backgroundColor: '#0981C2', 
               width: orbitNodeRadius, 
               height: orbitNodeRadius,
               borderRadius: orbitNodeRadius,
